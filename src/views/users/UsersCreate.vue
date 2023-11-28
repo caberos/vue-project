@@ -1,7 +1,5 @@
 <script>
 import axios from "axios";
-import { required, minLength, between } from "vuelidate"
-
 
 export default {
   name: "UsersCreate",
@@ -18,9 +16,9 @@ export default {
       },
     };
   },
-  validations:{},
   methods: {
     createUser() {
+      if (this.isValidForm()){
       axios
         .post("http://192.168.0.126:4000/v1/users/create", this.model.users)
         .then((res) => {
@@ -34,7 +32,27 @@ export default {
             email: "",
           };
         });
-    },
+    }},
+    isValidForm() {
+    // Validation rules
+    if (!this.model.users.id) {
+      alert('ID is required');
+      return false;
+    }
+    if (!this.model.users.userName) {
+      alert('Username is required');
+      return false;
+    }
+    if (!this.model.users.password || this.model.users.password.length < 6) {
+      alert('Password is required and should be at least 6 characters long');
+      return false;
+    }
+    if (!this.model.users.email || !/.+@.+\..+/.test(this.model.users.email)) {
+      alert('Invalid email');
+      return false;
+    }
+    return true;
+  },
   },
 };
 </script>
@@ -62,7 +80,7 @@ export default {
         <div class="mb-3">
           <label for="Email">Email</label>
           <input id="Email" name="Email" type="text" v-model="model.users.email"
-            class="form-control"/>
+            class="form-control" required/>
         </div>
         <div class="mb-3">
           <button type="button" @click="createUser" class="btn btn-primary">
@@ -77,4 +95,9 @@ export default {
 </template>
   
 <style scoped>
+.card  {
+  background-color: aliceblue;
+  font-size: medium;
+
+}
 </style>

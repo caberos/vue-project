@@ -41,5 +41,29 @@ import { RouterLink, RouterView } from "vue-router";
 </template>
 
 <style scoped>
+ header {
+    background-color: #3CBC8D;
+    padding: 20px 0;
+  }
+
+  .navbar {
+    margin-bottom: 20px;
+  }
+
+  .navbar-brand {
+    font-size: 2em;
+    color: azure;
+    
+  }
+
+  .navbar-nav .nav-item .nav-link {
+    font-size: 1em;
+    color: #fff;
+    
+  }
+  ul {
+  margin: 1px;
+  padding: 2px;
+}
 
 </style>

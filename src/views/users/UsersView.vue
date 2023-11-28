@@ -94,5 +94,13 @@ export default {
     </div>
 </template>
 <style scoped>
-
+.rol{
+    background-color: bisque;
+}
+.card{
+    background-color: aqua;
+}
+.card-body .table table-bordered .thead .tr .th {
+    background-color: cadetblue;
+}
 </style>
